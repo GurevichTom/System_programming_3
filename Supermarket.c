@@ -554,7 +554,7 @@ int loadMarketNameAndProductsFromBinary(SuperMarket* pMarket, FILE* fp) {
 		return 0;
 	}
 
-	for (int i = 0; i < len; i++) {
+	for (int i = 0; i < pMarket->productCount; i++) {
 		pMarket->productArr[i] = (Product*) malloc(sizeof(Product));
 		if (!pMarket->productArr[i]) {
 			freeProducts(pMarket);
