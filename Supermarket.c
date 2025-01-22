@@ -540,11 +540,12 @@ int loadMarketNameAndProductsFromBinary(SuperMarket* pMarket, FILE* fp) {
 	if (!pMarket->name) {
 		return 0;
 	}
-	if (fread(pMarket->name, 1, len, fp) != len) {
+	if (fread(pMarket->name, sizeof(char), len, fp) != len) {
 		return 0;
 	}
 
 	if (fread(&pMarket->productCount, sizeof(int), 1, fp) != 1) {
+		free(pMarket->name);
 		return 0;
 	}
 
@@ -556,13 +557,7 @@ int loadMarketNameAndProductsFromBinary(SuperMarket* pMarket, FILE* fp) {
 
 	for (int i = 0; i < pMarket->productCount; i++) {
 		pMarket->productArr[i] = (Product*) malloc(sizeof(Product));
-		if (!pMarket->productArr[i]) {
-			freeProducts(pMarket);
-			free(pMarket->name);
-			return 0;
-		}
-
-		if (fread(pMarket->productArr[i], sizeof(Product), 1, fp) != 1) {
+		if (!pMarket->productArr[i] || fread(pMarket->productArr[i], sizeof(Product), 1, fp) != 1) {
 			freeProducts(pMarket);
 			free(pMarket->name);
 			return 0;

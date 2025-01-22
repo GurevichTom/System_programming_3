@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 2.90)
 project(HW2_2025_Solution C)
 
 set(CMAKE_C_STANDARD 11)
