@@ -58,7 +58,7 @@ void displayFinalBillToPayClubMember(const float price, const Customer* pCustome
     //     printf("Club discount: %.2f%% (%.2f off)\n", discountPercent, discountAmount);
     // }
     // printf("Final bill to pay: %.2f\n", finalPrice);
-    printf("Total price for %s is %f, after discount of %f%%\n", pCustomer->name, finalPrice, discountPercent);
+    printf("Total price for %s is %.2f, after discount of %.2f%%\n", pCustomer->name, finalPrice, discountPercent);
 }
 
 void printClubMember(const Customer* pCustomer) {

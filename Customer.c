@@ -162,7 +162,8 @@ int isCustomerIdValid(const char* id)
 
 
 void displayFinalBillToPayCustomer(const float price, const Customer* pCustomer) {
-	printf("Final bill to pay: %.2f\n", price);
+	// printf("Final bill to pay: %.2f\n", price);
+	printf("Total price for %s is %.2f", pCustomer->name, price);
 }
 
 void printShoppingCartAndDisplayFinalBill(const Customer* pCustomer) {
@@ -211,11 +212,9 @@ void saveCustomer(const Customer* pCust, FILE* fp) {
 
 char* loadString(FILE* fp) {
 	char buffer[MAX_STR_LEN] = {0};
-	// if (fscanf(fp, "%s", buffer) != 1)
-	// 	return NULL;
 	if (!fgets(buffer, MAX_STR_LEN, fp))
 		return NULL;
-
+	buffer[strcspn(buffer, "\n")] = '\0';
 	char* back = (char*) malloc(strlen(buffer) + 1);
 	if (!back)
 		return NULL;

@@ -24,6 +24,7 @@ void			initProduct(Product* pProduct);
 void			initProductNoBarcode(Product* pProduct);
 void			initProductName(Product* pProduct);
 void			printProduct(const Product* pProduct);
+void			genericPrintProductPtr(const void* prod);
 
 void			generateBarcode(Product* pProd);
 void			getBarcodeCode(char* code);

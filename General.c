@@ -172,3 +172,10 @@ void toLowerStr(char* str)
 		str++;
 	}
 }
+
+void generalArrayFunction(void *arr, const size_t len, const size_t elem_size, void (*f)(void*)) {
+	for (int i = 0; i < len; i++) {
+		void* curr = (char*) arr + i * elem_size;
+		f(curr);
+	}
+}

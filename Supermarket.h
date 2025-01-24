@@ -2,6 +2,7 @@
 #include "Customer.h"
 #include "Product.h"
 #include "ShoppingCart.h"
+#include "save_load.h"
 
 typedef enum {
 	SORT_BY_NAME,
@@ -14,7 +15,7 @@ typedef enum {
 extern const char* sortCriteriaStrings[NUM_SORT_CRITERIA];
 extern void* sortCriteriaComparators[NUM_SORT_CRITERIA];
 
-typedef struct
+typedef struct SuperMarket
 {
 	char*		name;
 	Customer*	customerArr;
@@ -24,8 +25,6 @@ typedef struct
 	SortCriteria productsArrSortedBy; // Current sorting criterion
 }SuperMarket;
 
-#define BINARY_SAVE_FILE "SuperMarket.bin"
-#define TEXT_SAVE_FILE "SuperMarket.txt"
 
 void		sortProducts(SuperMarket* pMarket);
 int			compareProductsPtrByPrice(const void* a, const void* b);
@@ -63,14 +62,6 @@ Customer*	FindCustomerById(SuperMarket* pMarket, const char* id);
 
 Customer*	getCustomerWhoShop(SuperMarket* pMarket);
 Product*	getProductAndCount(SuperMarket* pMarket, int* pCount);
-
-int saveMarketNameAndProductsToBinary(const SuperMarket* pMarket);
-void saveProducts(const SuperMarket* pMarket, FILE* fp);
-int saveCustomersToTxt(const SuperMarket* pMarket);
-
-int loadSuperMarket(SuperMarket* pMarket);
-int loadMarketNameAndProductsFromBinary(SuperMarket* pMarket, FILE* fp);
-int loadCustomersFromTxt(SuperMarket* pMarket, FILE* fp);
 
 void		freeMarket(SuperMarket* pMarket);
 void		freeProducts(SuperMarket* pMarket);

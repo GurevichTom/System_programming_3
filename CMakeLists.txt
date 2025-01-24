@@ -26,4 +26,6 @@ add_executable(HW2_2025_Solution
         list.c
         ClubMember.h
         ClubMember.c
-        CustomerVTable.h)
+        CustomerVTable.h
+        save_load.h
+        save_load.c)

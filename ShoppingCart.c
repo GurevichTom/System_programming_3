@@ -10,11 +10,14 @@ void	initCart(ShoppingCart* pCart)
 
 float	getTotalPrice(const ShoppingCart* pCart)
 {
+	printf("\n");
 	float price = 0;
 	for (const NODE* tmp = pCart->item_list.head.next; tmp; tmp = tmp->next) {
 		const ShoppingItem* current_item = (ShoppingItem*) tmp->key;
 		price += current_item->price * (float) current_item->count;
+		printItem(current_item);
 	}
+	printf("\n");
 
 	return price;
 }

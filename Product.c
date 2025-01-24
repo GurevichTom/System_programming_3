@@ -43,6 +43,11 @@ void	printProduct(const Product* pProduct)
 	free(dateStr);
 }
 
+void genericPrintProductPtr(const void* prod) {
+	const Product* pProduct = *(const Product**) prod;
+	printProduct(pProduct);
+}
+
 
 void generateBarcode(Product* pProd)
 {

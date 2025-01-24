@@ -56,13 +56,9 @@ void L_insertSorted(LIST *pList, DATA Value, int (*compare) (const void*, const 
 
 	NODE* prev = &pList->head;
 	for (NODE* tmp = pList->head.next; tmp; tmp = tmp->next, prev=prev->next) {
-		if (compare(tmp->key, Value) >= 0) {
-			L_insert(prev, Value);
-			return;
-		}
+		if (compare(tmp->key, Value) >= 0)
+			break; // Found the right position
 	}
-
-	// Got to the end of the list without inserting
 	L_insert(prev, Value);
 }
 
