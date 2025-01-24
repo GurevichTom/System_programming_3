@@ -1,5 +1,4 @@
 #pragma once
-
 #define EXIT -1
 
 typedef enum

@@ -5,6 +5,8 @@ set(CMAKE_C_STANDARD 11)
 
 include_directories(.)
 
+add_compile_definitions(_CRT_SECURE_NO_WARNINGS)
+
 add_executable(HW2_2025_Solution
     Customer.c
     Customer.h

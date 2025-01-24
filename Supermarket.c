@@ -80,15 +80,23 @@ void findProduct(const SuperMarket* pMarket) {
 		return;
 	}
 	Product toSearch = {0};
-	if (pMarket->productsArrSortedBy == SORT_BY_NAME) {
-		const char* productNameToSearch = getStrExactLength("Enter product name");
-		strcpy(toSearch.name, productNameToSearch);
-	} else if (pMarket->productsArrSortedBy == SORT_BY_PRICE) {
-		printf("Enter product price\n");
-		scanf("%d", &toSearch.price);
-	} else if (pMarket->productsArrSortedBy == SORT_BY_QUANTITY) {
-		printf("Enter product count\n");
-		scanf("%d", &toSearch.count);
+
+	switch (pMarket->productsArrSortedBy) {
+		case SORT_BY_NAME:
+			const char* productNameToSearch = getStrExactLength("Enter product name");
+			strcpy(toSearch.name, productNameToSearch);
+			break;
+		case SORT_BY_PRICE:
+			printf("Enter product price\n");
+			scanf("%f", &toSearch.price);
+			break;
+		case SORT_BY_QUANTITY:
+			printf("Enter product count\n");
+			scanf("%d", &toSearch.count);
+			break;
+		default:
+			printf("Unknown sorting criteria. Abort\n");
+			return;
 	}
 	Product* toSearchPtr = &toSearch;
 

@@ -91,7 +91,8 @@ int loadCustomersFromTxt(struct SuperMarket* pMarket, FILE* fp) {
 	if (!fp)
 		return 0;
 
-	fscanf(fp, "%d", &pMarket->customerCount);
+	if (fscanf(fp, "%d", &pMarket->customerCount) != 1)
+		return 0;
 	fgetc(fp);
 	pMarket->customerArr = (Customer*) malloc(sizeof(Customer) * pMarket->customerCount);
 	if (!pMarket->customerArr) {
